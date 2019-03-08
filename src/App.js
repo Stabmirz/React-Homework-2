@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import './App.css';
 import Form from "./components/Form";
 import Location from "./components/Location";
@@ -155,26 +156,36 @@ class App extends Component {
           <HourlyDetails/>
         </div>
         <div className="five-day-weather">
-          <div>
-            <p className="day">Sat</p>
-            <WeatherByDay/>
-          </div>
-          <div>
-            <p className="day">Sun</p>
-            <WeatherByDay/>
-          </div>
-          <div>
-            <p className="day">Mon</p>
-            <WeatherByDay/>
-          </div>
-          <div>
-            <p className="day">Tues</p>
-            <WeatherByDay/>
-          </div>
-          <div>
-            <p className="day">Wed</p>
-            <WeatherByDay/>
-          </div>
+          <Link to="/day1">
+            <div>
+              <p className="day">Sat</p>
+              <WeatherByDay/>
+            </div>
+          </Link>
+          <Link to="/day2">
+            <div>
+              <p className="day">Sun</p>
+              <WeatherByDay/>
+            </div>
+          </Link>
+          <Link to="/day3">
+            <div>
+              <p className="day">Mon</p>
+              <WeatherByDay/>
+            </div>
+          </Link>
+          <Link to="/day4">
+            <div>
+              <p className="day">Tue</p>
+              <WeatherByDay/>
+            </div>
+          </Link>
+          <Link to="/day5">
+            <div>
+              <p className="day">Wed</p>
+              <WeatherByDay/>
+            </div>
+          </Link>
         </div>
       </div>
     );
