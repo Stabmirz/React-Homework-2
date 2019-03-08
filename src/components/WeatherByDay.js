@@ -1,5 +1,4 @@
 import React from "react";
-import Icon from "./Icon";
 
 const WeatherByDay= props => (
   <div className="weather-by-day">

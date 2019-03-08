@@ -5,7 +5,7 @@ const WeatherData = props => (
 		<div className="icon-temperature">
 			{ 	
 				props.icon &&
-				<img width = "200" height= "200" src={'http://openweathermap.org/img/w/'+`${props.icon}`+'.png'} alt="weater-icon"/>
+				<img width = "150" height= "150" src={'http://openweathermap.org/img/w/'+`${props.icon}`+'.png'} alt="weater-icon"/>
 			}
 			{ 	
         		props.temperature &&

@@ -1,10 +1,10 @@
 import React from "react";
 import App from './App';
-import Day1 from './Day1';
-import Day2 from './Day2';
-import Day3 from './Day3';
-import Day4 from './Day4';
-import Day5 from './Day5';
+import Day1 from './days/Day1';
+import Day2 from './days/Day2';
+import Day3 from './days/Day3';
+import Day4 from './days/Day4';
+import Day5 from './days/Day5';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
