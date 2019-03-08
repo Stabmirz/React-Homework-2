@@ -5,7 +5,8 @@ import Form from "./components/Form";
 import Location from "./components/Location";
 import Description from "./components/Description";
 import WeatherData from "./components/WeatherData";
-// import MaxMinTemp from "./components/MaxMinTemp";
+import MaxMinTemp from "./components/MaxMinTemp";
+import Icon from './components/Icon';
 
 
 const Titles = () => (
@@ -124,7 +125,7 @@ class App extends Component {
   }
 
   render() {
-    const{city,country,description,icon,temperature,humidity,wind,pressure,error}=this.state;
+    const{city,country,description,icon,temperature,humidity,wind,pressure,error,max_temperature,min_temperature}=this.state;
     return (
       <div className="main">
         <div className="title">
@@ -152,13 +153,20 @@ class App extends Component {
             error={error}
           />
         </div>
-            {/* <WeatherByDay
-            max_temperature={max_temperature}
-            min_temperature={min_temperature} /> */}
         <div className="weather-hourly-details">
           <HourlyDetails/>
         </div>
         <div className="five-day-weather">
+          <Link to="/day5" style={{ textDecoration: 'none' }}>
+            <div className="day-weather-div">
+              <p className="day">Today</p>
+              <div className="icon"><Icon icon={icon} /></div>
+              <MaxMinTemp
+                max_temperature={max_temperature}
+                min_temperature={min_temperature}
+                />
+            </div>
+          </Link>
           <Link to="/day1" style={{ textDecoration: 'none' }}>
             <div className="day-weather-div">
               <p className="day">Sat</p>
@@ -180,12 +188,6 @@ class App extends Component {
           <Link to="/day4" style={{ textDecoration: 'none' }}>
             <div className="day-weather-div">
               <p className="day">Tue</p>
-              <WeatherByDay/>
-            </div>
-          </Link>
-          <Link to="/day5" style={{ textDecoration: 'none' }}>
-            <div className="day-weather-div">
-              <p className="day">Wed</p>
               <WeatherByDay/>
             </div>
           </Link>

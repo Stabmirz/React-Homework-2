@@ -14,8 +14,11 @@
   text-align: center;
   font-weight: 600;
 }
+.icon{
+  margin-left:20px;
+}
 
-.fa.fa-cloud-sun{
+.fa.fa-cloud-sun, icon{
   color:orange;
   font-size: 36px;
 }

@@ -4,7 +4,7 @@ const Icon = props => (
     <div>
         { 	
             props.icon &&
-            <i className="icon"><img src={'http://openweathermap.org/img/w/'+`${props.icon}`+'.png'} alt="weater-icon"/></i>
+            <img width = "80" height= "80" src={'http://openweathermap.org/img/w/'+`${props.icon}`+'.png'} alt="weater-icon"/>
         }
     </div>
 );
