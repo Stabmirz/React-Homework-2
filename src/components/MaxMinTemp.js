@@ -1,6 +1,6 @@
 import React from "react";
 
-const WeatherByDay= props => (
+const MaxMinTemp= props => (
   <div className="weather-by-day">
     <p className="temperature">
       { 	
@@ -14,4 +14,4 @@ const WeatherByDay= props => (
     </p>
   </div>
   );
-export default WeatherByDay;
+export default MaxMinTemp;

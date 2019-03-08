@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import './App.css';
 import Form from "./components/Form";
 import Location from "./components/Location";
+import Description from "./components/Description";
 import WeatherData from "./components/WeatherData";
-// import WeatherByDay from "./components/WeatherByDay";
+// import MaxMinTemp from "./components/MaxMinTemp";
 
 
 const Titles = () => (
@@ -123,7 +124,7 @@ class App extends Component {
   }
 
   render() {
-    const{city,country,description,icon,temperature,humidity,wind,pressure,error,max_temperature,min_temperature}=this.state;
+    const{city,country,description,icon,temperature,humidity,wind,pressure,error}=this.state;
     return (
       <div className="main">
         <div className="title">
@@ -136,6 +137,8 @@ class App extends Component {
           <Location 
           city={city}
           country={country}
+          />
+          <Description
           description={description}
           />
         </div>
