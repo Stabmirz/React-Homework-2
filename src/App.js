@@ -157,7 +157,7 @@ class App extends Component {
           <HourlyDetails/>
         </div>
         <div className="five-day-weather">
-          <Link to="/day5" style={{ textDecoration: 'none' }}>
+          <Link to="" style={{ textDecoration: 'none' }}>
             <div className="day-weather-div">
               <p className="day">Today</p>
               <div className="icon"><Icon icon={icon} /></div>
