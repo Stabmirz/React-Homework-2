@@ -1,38 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
+import Form from "./components/Form";
+import Location from "./components/Location";
+import WeatherData from "./components/WeatherData";
+// import WeatherByDay from "./components/WeatherByDay";
 
-function Title(){
+
+const Titles = () => (
+	<div>
+		<h1>5 days Weather Forecast</h1>
+	</div>
+);
+
+function WeatherByDay(){
   return(
-    <h1>7 days Weather Forecast</h1>
-
-  );
-}
-
-function Location(){
-  return(
-    <div className="city-day-condition">
-      <p className="cityName">Miami, FL</p>
-      <p className="day">Wednesday</p>
-      <p className="condition">Party Cloud</p>
+    <div className="weather-by-day">
+      <i className='fa fa-cloud-sun'></i>
+      <p className="temperature">
+        <span className="high"> 86°C</span>
+        <span className="low"> 66°C</span>
+      </p>
     </div>
-  );
-}
-
-function WeatherData(){
-  return(
-    <div className="weather-data">
-      <div className="icon-temperature">
-        <i className='fa fa-cloud-sun'></i>
-        <span className="temperature">86°C</span>
-      </div>
-      <div className="wind-humidity-pressure">
-        <p className="wind">Wind : 20 mph</p>
-        <p className="humidity">Humidity : 94%</p>
-        <p className="pressure">Pressure : 95 kpa</p>
-      </div>
-
-    </div>
-
   );
 }
 
@@ -87,43 +75,86 @@ function HourlyDetails(){
   );
 }
 
-function WeatherByDay(){
-  return(
-    <div className="weather-by-day">
-      <i className='fa fa-cloud-sun'></i>
-      <p className="temperature">
-        <span className="high"> 86°C</span>
-        <span className="low"> 66°C</span>
-      </p>
-    </div>
-  );
-}
+
+const API_KEY = "b292bd2a578c27b2e97bbb03b7515a95";
 
 class App extends Component {
+  state = {
+    temperature: undefined,
+    max_temperature: undefined,
+    min_temperature: undefined,
+    city: undefined,
+    country: undefined,
+    humidity: undefined,
+    description: undefined,
+    wind: undefined,
+    pressure: undefined,
+    icon: undefined,
+    error: undefined
+  }
+
+  getWeather = async (e) => {
+    e.preventDefault();
+    const city = e.target.elements.city.value;
+    const country = e.target.elements.country.value;
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
+    const data = await api_call.json();
+    console.log(data);
+    if (city && country) {
+      this.setState({
+        city: data.name,
+        country: data.sys.country,
+        temperature: Math.round(data.main.temp),
+        max_temperature: Math.round(data.main.temp_max),
+        min_temperature: Math.round(data.main.temp_min),
+        description: data.weather[0].description,
+        wind: data.wind.speed,
+        humidity: data.main.humidity,
+        pressure: data.main.pressure,
+        icon:data.weather[0].icon,
+        error:''
+      });
+    } else {
+      this.setState({
+        error: "Please enter the values."
+      });
+    }
+  }
+
   render() {
+    const{city,country,description,icon,temperature,humidity,wind,pressure,error,max_temperature,min_temperature}=this.state;
     return (
       <div className="main">
         <div className="title">
-          <Title/>
+          <Titles />
         </div>
-        <div className="city">
-          <Location/>
+        <div className="form">
+          <Form getWeather={this.getWeather} />
+        </div>
+        <div className="location-description">
+          <Location 
+          city={city}
+          country={country}
+          description={description}
+          />
         </div>
         <div className="temperature-details">
-          <WeatherData/>
+          <WeatherData 
+            icon={icon} 
+            temperature={temperature} 
+            humidity={humidity}
+            wind={wind}
+            pressure={pressure}
+            error={error}
+          />
         </div>
+            {/* <WeatherByDay
+            max_temperature={max_temperature}
+            min_temperature={min_temperature} /> */}
         <div className="weather-hourly-details">
           <HourlyDetails/>
         </div>
-        <div className="seven-day-weather">
-          <div>
-            <p className="day">Thur</p>
-            <WeatherByDay/>
-          </div>
-          <div>
-            <p className="day">Fri</p>
-            <WeatherByDay/>
-          </div>
+        <div className="five-day-weather">
           <div>
             <p className="day">Sat</p>
             <WeatherByDay/>
@@ -136,10 +167,18 @@ class App extends Component {
             <p className="day">Mon</p>
             <WeatherByDay/>
           </div>
+          <div>
+            <p className="day">Tues</p>
+            <WeatherByDay/>
+          </div>
+          <div>
+            <p className="day">Wed</p>
+            <WeatherByDay/>
+          </div>
         </div>
       </div>
     );
   }
-}
+};
 
 export default App;

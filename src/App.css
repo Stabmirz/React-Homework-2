@@ -1,8 +1,8 @@
-.city-day-condition{
+.location-description{
   margin-top: 50px;
 }
 
-.cityName{
+.location{
   font-size: 26px;
   text-align: center;
   font-weight: bold;
@@ -14,7 +14,11 @@
   text-align: center;
 }
 
-.condition{
+.fa.fa-cloud-sun{
+  color:orange;
+  font-size: 36px;
+}
+.description{
   margin-top:-15px;
   font-size: 14px;
   text-align: center;
@@ -25,11 +29,6 @@
   color:blue;
 }
 
-.fa.fa-cloud-sun{
-  font-size: 36px;
-  margin-right:5px;
-  color:rgb(255, 187, 0);
-}
 
 .weather-data{
   margin-top: 60px;
@@ -45,7 +44,8 @@
 
 .wind-humidity-pressure{
   justify-content: flex-end;
-  font-size: 14px;
+  font-size: 16px;
+  align-self: center;
 }
 
 .table{
@@ -104,8 +104,13 @@ td{
   text-align: center;
 }
 
+.form{
+  align-self: center;
+  margin-top: 40px;
+}
 
-.seven-day-weather{
+.five-day-weather{
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
